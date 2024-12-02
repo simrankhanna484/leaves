@@ -1,0 +1,93 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #151515; 
+}
+
+.background {
+    position: fixed;
+    background: #151515; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+    z-index: -1;
+    animation: subtleParallax 10s linear infinite;
+}
+
+.leaves-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.leaf {
+    position: absolute;
+    width: 210px;
+    height: 120px;
+    background-image: url('AdobeStock_931778220-min.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: fall linear infinite, changeColor 10s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+.leaf:hover {
+    transform: scale(6) rotate(15deg); /* Flutter effect */
+    filter: brightness(8);
+}
+
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    25% {
+        filter: hue-rotate(60deg);
+    }
+    50% {
+        filter: hue-rotate(120deg);
+    }
+    75% {
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        filter: hue-rotate(240deg);
+    }
+}
+
+
+@keyframes subtleParallax {
+    0% {
+        background-position: 50% 0%;
+    }
+    50% {
+        background-position: 48% 2%;
+    }
+    100% {
+        background-position: 50% 0%;
+    }
+}
